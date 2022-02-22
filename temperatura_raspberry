@@ -1,0 +1,25 @@
+#!/bin/bash
+ # Shell script: temp.sh
+ # Author: N1ghtGu4rd
+while true in
+do
+clear
+  echo -e "\e[92mScript realizado por N1ghtGu4rd\e[0m"
+  cpu=$(cat /sys/class/thermal/thermal_zone0/temp)
+ # gpu=$(vcgencmd measure_temp)
+  echo -e "\e[92mEquipo => $(hostname)\e[0m"
+  echo -e "\e[92m$(date)\e[0m"
+  echo -e "\e[92m------------------------------\e[0m"
+  echo -e "\e[92mTemp.CPU => $((cpu/1000))ºC\e[0m"
+  echo -e "\e[92mTemp.GPU => $(/bin/vcgencmd measure_temp)\e[0m"
+  echo -e "\e[92m------------------------------\e[0m"
+  echo -e "\e[92mCPU\e[0m"
+  echo -e "\e[92m$(vcgencmd measure_clock arm)Hz\e[0m"
+  echo -e "\e[92m$(vcgencmd measure_volts core)\e[0m"
+  echo -e "\e[92mMem. del Sistema $(vcgencmd get_mem arm)\e[0m"
+  echo -e "\e[92mMem. de la $(vcgencmd get_mem gpu)\e[0m"
+  echo -e "\e[92m------------------------------\e[0m"
+  echo -e "\e[92mConsumo de memoria\e[0m"
+  echo -e "\e[92m$(egrep --color 'Mem|Cache|Swap' /proc/meminfo)\e[0m"
+  sleep 5
+done
